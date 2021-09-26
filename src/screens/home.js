@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {StyleSheet, View, Modal, ScrollView, Text, TextInput, TouchableOpacity, FlatList} from 'react-native'
+import {StyleSheet, View, Modal, ScrollView, Text, TextInput, TouchableOpacity, FlatList,StatusBar} from 'react-native'
 import * as theme from '../constants/theme'
 import * as company from '../constants/jobs';
 import Company from '../components/company';
@@ -14,6 +14,8 @@ export default function Home ({ navigation }) {
         setFilterVisible(!filterVisible)
     }
     return(            
+        <>
+       
        <View style={{flex: 1}}>
            <Modal 
                 animationType="slide" 
@@ -24,23 +26,15 @@ export default function Home ({ navigation }) {
 
             <View>
 
-                {/* Header */}
-                <View  style={styles.header}>
-                    <TouchableOpacity>
-                        <Icon name="sort" size={30} color={theme.colors.black} />
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
-                        <Icon name="person-outline" size={30} color={theme.colors.black} />
-                    </TouchableOpacity>
-                </View>
-
+                {/* Safe area */}
+                <View  style={styles.safeArea}/>
+                 
                 {/* Body */}
                 <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
 
-                    {/* Title */}
+                    {/* Search patient */}
                     <View>
-                        <Text style={styles.title}>Hi Skander,</Text>
-                        <Text style={styles.title}>Find Your Dream Job</Text>
+                        <Text style={styles.h4}>Search</Text>
                     </View>
 
                     {/* Search */}
@@ -48,7 +42,7 @@ export default function Home ({ navigation }) {
                         <View style={styles.searchInputContainer}>
                             <Icon name="search" size={30} color={theme.colors.silver} />
                             <TextInput 
-                                placeholder='Search for job title..' />
+                                placeholder='Enter patient name' />
                         </View>
                         <TouchableOpacity style={styles.searchIconContainer} onPress={() => ToggleFilterVisible()}>
                             <Icon name="filter-list" size={30} color={theme.colors.white} />
@@ -89,18 +83,30 @@ export default function Home ({ navigation }) {
                 </ScrollView>
             </View>
        </View>
+   </>
     )
 }
 
 const styles =StyleSheet.create({
+    safeArea: {
+        height:15,
+        backgroundColor: theme.colors.lightWhite,
+    },
     header: {
         padding: 20,
         flexDirection: 'row',
+        backgroundColor: theme.colors.lightWhite,
         justifyContent: 'space-between',
-        backgroundColor: theme.colors.lightWhite
+        backgroundColor: 'red'
     },
     container: {
         backgroundColor: theme.colors.lightWhite
+    },
+    h4: {
+        marginLeft: 20,
+        fontWeight: 'bold',
+        fontSize: theme.sizes.h4,
+        color: theme.colors.black
     },
     title: {
         marginLeft: 20,
