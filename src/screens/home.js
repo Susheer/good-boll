@@ -2,8 +2,7 @@ import React, {useState} from 'react';
 import {StyleSheet, View, Modal, ScrollView, Text, TextInput, TouchableOpacity, FlatList,StatusBar} from 'react-native'
 import * as theme from '../constants/theme'
 import * as company from '../constants/jobs';
-import Company from '../components/company';
-import Jobs from '../components/jobs';
+import Pateint from '../components/pateint';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import FilterModal from '../components/filterModal'
 
@@ -30,10 +29,8 @@ export default function Home ({ navigation }) {
                 <View  style={styles.safeArea}/>
                  
                 {/* Body */}
-                <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-
-                    {/* Search patient */}
-                    <View>
+                  {/* Search patient */}
+                  <View>
                         <Text style={styles.h4}>Search</Text>
                     </View>
 
@@ -49,34 +46,18 @@ export default function Home ({ navigation }) {
                         </TouchableOpacity>
                     </View>
 
-                    {/* Popular Companies */}
-                    <View style={styles.popularContainer}>
-                        <Text style={[styles.popularText, {marginLeft: 20}]}>Popular Companies</Text>
-                        <FlatList 
-                            data={company.companies}
-                            horizontal={true}
-                            showsHorizontalScrollIndicator={false}
-                            keyExtractor={item => item.id}
-                            renderItem={({ item }) => {
-                                return (
-                                    <TouchableOpacity
-                                        activeOpacity={1}
-                                        style={{flex: 1}} >
-                                        <Company item={item} />
-                                    </TouchableOpacity>
-                                )
-                            }} />
-                    </View>
+                <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
 
-                    {/* Recent Jobs */}
+                  
+                    {/* Recent Patients */}
                     <View style={[styles.popularContainer, {marginRight: 20, marginLeft: 20, marginBottom: 70}]}>
-                        <Text style={styles.popularText}>Recent Jobs </Text>
+                        <Text style={styles.popularText}>Recent Patients</Text>
                         <FlatList 
                             data={company.companies}
                             keyExtractor={item => item.id}
                             renderItem={({ item }) => {
                                 return (
-                                    <Jobs item={item} />
+                                    <Pateint pateint={item} />
                                 )
                             }} />
                     </View>
