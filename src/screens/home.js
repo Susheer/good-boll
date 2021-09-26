@@ -14,7 +14,7 @@ import * as theme from '../constants/theme';
 import * as company from '../constants/patient';
 import Pateint from '../components/pateint';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import FilterModal from '../components/filterModal';
+import FilterModal from '../components/filterPatient';
 
 export default function Home({navigation}) {
   const [filterVisible, setFilterVisible] = useState(false);
@@ -59,7 +59,7 @@ export default function Home({navigation}) {
               styles.popularContainer,
               {marginRight: 20, marginLeft: 20},
             ]}>
-            <Text style={styles.popularText}>Recent Patients</Text>
+            <Text style={styles.popularText}>Quick result</Text>
           </View>
           <ScrollView
             style={styles.container}

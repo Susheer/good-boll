@@ -31,7 +31,7 @@ const FilterModal = (props) => {
             color={theme.colors.black}
           />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Filter Patient</Text>
+        <Text style={styles.headerTitle}>Filter Patients</Text>
         <TouchableOpacity onPress={() => Reset()}>
           <Text style={{color: theme.colors.gray}}>Reset</Text>
         </TouchableOpacity>
@@ -39,41 +39,43 @@ const FilterModal = (props) => {
 
       {/* Body */}
       <View style={styles.body}>
-        <Text style={styles.title}>Category</Text>
-        <View style={styles.pickerContainer}>
-          <Picker
-            value={distance}
-            selectedValue={category}
-            onValueChange={(itemValue, itemIndex) => setCategory(itemValue)}>
-            <Picker.Item label="UX/UI Design" value="UX/UI Design" />
-            <Picker.Item label="Graphic Design" value="Graphic Design" />
-            <Picker.Item label="Digital Marketing" value="Digital Marketing" />
-            <Picker.Item
-              label="Computer Technologies"
-              value="Computer Technologies"
-            />
-          </Picker>
+        <View
+          style={{
+            justifyContent: 'center',
+            flexDirection: 'row',
+          }}>
+          <View style={[styles.col, {flex: 2}]}>
+            <Text style={styles.title}>Mobile</Text>
+            <View style={[styles.locationInputContainer]}>
+              <TextInput style={{marginLeft: 10}} placeholder="Mobile number" />
+            </View>
+          </View>
+          <View style={[styles.col, {marginLeft: 16}]}>
+            <Text style={styles.title}>Gender</Text>
+            <View style={styles.pickerContainer}>
+              <Picker
+                value={distance}
+                selectedValue={category}
+                onValueChange={(itemValue, itemIndex) =>
+                  setCategory(itemValue)
+                }>
+                <Picker.Item label="Male" value="Male" />
+                <Picker.Item label="Femal" value="Femal" />
+                <Picker.Item label="Transgender" value="Transgender" />
+              </Picker>
+            </View>
+          </View>
         </View>
-
-        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-          <Text style={styles.title}>Distance</Text>
-          <Text style={styles.title}>{distance} km</Text>
-        </View>
-        <Slider
-          step={1}
-          style={{height: 50}}
-          minimumValue={0}
-          maximumValue={100}
-          minimumTrackTintColor={theme.colors.gray}
-          maximumTrackTintColor={theme.colors.black}
-          onValueChange={(value) => setDistance(value)}
-        />
 
         {/* Location */}
-        <Text style={styles.title}>Location</Text>
         <View style={styles.locationInputContainer}>
-          <Icon name="my-location" size={30} color={theme.colors.silver} />
-          <TextInput style={{marginLeft: 10}} placeholder="Location.." />
+          <TextInput style={{marginLeft: 10}} placeholder="Patient Name " />
+        </View>
+        <View style={styles.locationInputContainer}>
+          <TextInput
+            style={{marginLeft: 10}}
+            placeholder="Father/Mother Name"
+          />
         </View>
       </View>
 
@@ -93,6 +95,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: theme.colors.lightWhite,
+  },
+  col: {
+    flex: 1,
   },
   header: {
     height: 70,
@@ -117,10 +122,18 @@ const styles = StyleSheet.create({
   title: {
     marginTop: 20,
     fontWeight: 'bold',
-    fontSize: theme.sizes.h4,
+    fontSize: theme.sizes.h3,
+  },
+  searchInputContainer: {
+    flex: 1,
+    borderColor: theme.colors.black,
+    padding: 5,
+    borderRadius: 5,
+    alignItems: 'center',
+    flexDirection: 'row',
   },
   pickerContainer: {
-    marginTop: 10,
+    marginTop: 9,
     borderWidth: 1,
     borderRadius: 5,
     borderColor: theme.colors.black,

@@ -8,12 +8,13 @@ const Patient = ({pateint}) => {
     return(
         <View style={styles.container}>
             <Image
-                source={pateint.logo}
+            
+                source={{uri:pateint.profile_pic}}
                 borderRadius={10}
                 style={{width: 40, height: 40}} />
             <View style={styles.textContainer}>
-                <Text style={styles.jobTitle}>{pateint.job}</Text>
-                <Text style={styles.jobLocation}>{pateint.location}</Text>
+                <Text style={styles.name}>{pateint.name}</Text>
+                <Text style={styles.parentsNm}>{pateint.prents}</Text>
             </View>
             <View style={styles.iconContainer}>
                 <Icon name="more-vert" size={30} color={theme.colors.black} />
@@ -39,12 +40,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center'
     },
-    jobTitle: {
+    name: {
         fontWeight: 'bold',
         fontSize: theme.sizes.h3,
         color: theme.colors.black
     },
-    jobLocation: {
+    parentsNm: {
         fontSize: theme.sizes.h2,
         color: theme.colors.silver
     },

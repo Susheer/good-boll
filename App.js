@@ -1,9 +1,10 @@
 import React from 'react';
 
-import { LogBox } from 'react-native';
+import { LogBox , StatusBar} from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import * as theme from './src/constants/theme'
 
 import Home from './src/screens/home';
 import Profile from './src/screens/profile'
@@ -21,9 +22,12 @@ function MyStack() {
 
 const App = () => {
   return (
-    <NavigationContainer>
+    <>
+    <StatusBar barStyle="dark-content" backgroundColor={theme.colors.lightWhite}/>
+    <NavigationContainer>   
       <MyStack/>
     </NavigationContainer>
+    </>
   );
 };
 
